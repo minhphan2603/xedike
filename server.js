@@ -13,7 +13,13 @@ mongoose.connect('mongodb://localhost:27017/xedike', {useNewUrlParser: true})
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use('/api/user',require('./Routes/api/user'));
+app.use('/upload/avatar',(express.static('./upload')));
+
+app.use('/api/user',require('./Routes/api/user/user'));
+
+
+
+
 
 
 

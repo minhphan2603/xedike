@@ -8,7 +8,7 @@ const authenticating = (req,res,next) => {
     
     try {
         const decoded = jwt.verify(token,'cybersoft');
-        console.log('giai ma: ',decoded);
+        // console.log('giai ma: ',decoded);
         req.user = decoded;
         next()
     } catch (error) {
@@ -22,8 +22,10 @@ const authorizing = (userTypeArray) => {
 
         if (userTypeArray.includes(userType)) {
             next()
+        } else {
+             res.status(403).json('ban khong co quyen truy cap');
         }
-        res.status(403).json('ban khong co quyen truy cap')
+       
     }
 
 }
